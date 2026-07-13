@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="th">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ติดตั้ง Field Track</title>
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body {
+    font-family: -apple-system, "Segoe UI", Tahoma, "Sarabun", sans-serif;
+    background: #fbeaea; color: #222; line-height: 1.6;
+    min-height: 100vh; display: flex; align-items: center; justify-content: center; padding: 20px;
+  }
+  .card {
+    background: #fff; border-radius: 20px; max-width: 420px; width: 100%;
+    box-shadow: 0 8px 30px rgba(211,47,47,0.15); overflow: hidden;
+  }
+  .head { background: #d32f2f; color: #fff; text-align: center; padding: 32px 20px 24px; }
+  .logo {
+    width: 76px; height: 76px; border-radius: 20px; background: #fff; color: #d32f2f;
+    font-size: 40px; font-weight: 800; display: flex; align-items: center; justify-content: center;
+    margin: 0 auto 14px;
+  }
+  .head h1 { font-size: 24px; font-weight: 800; }
+  .head p { font-size: 14px; opacity: .92; margin-top: 4px; }
+  .body { padding: 24px 22px 28px; }
+  .dl {
+    display: block; text-decoration: none; text-align: center;
+    background: #d32f2f; color: #fff; font-size: 19px; font-weight: 700;
+    padding: 16px; border-radius: 14px; box-shadow: 0 4px 0 #9a1c1c;
+    transition: transform .05s;
+  }
+  .dl:active { transform: translateY(4px); box-shadow: 0 0 0 #9a1c1c; }
+  .ver { text-align: center; color: #999; font-size: 12px; margin-top: 10px; }
+  h2 { font-size: 15px; margin: 24px 0 10px; color: #d32f2f; }
+  ol { padding-left: 20px; }
+  ol li { margin-bottom: 8px; font-size: 14.5px; }
+  .note {
+    background: #fff8e1; border: 1px solid #ffe082; border-radius: 12px;
+    padding: 12px 14px; font-size: 13px; color: #7a5b00; margin-top: 18px;
+  }
+</style>
+</head>
+<body>
+  <div class="card">
+    <div class="head">
+      <div class="logo">F</div>
+      <h1>Field Track</h1>
+      <p>แอปลงเวลา/ติดตามงานพนักงานภาคสนาม</p>
+    </div>
+    <div class="body">
+      <a class="dl" href="FieldTrack-v1.0.apk" download>📲 ดาวน์โหลด &amp; ติดตั้ง</a>
+      <div class="ver">เวอร์ชัน 1.0 · สำหรับ Android</div>
+
+      <h2>วิธีติดตั้ง</h2>
+      <ol>
+        <li>กดปุ่ม <b>ดาวน์โหลด</b> ด้านบน รอไฟล์โหลดเสร็จ</li>
+        <li>เปิดไฟล์ที่โหลดมา (แถบแจ้งเตือน หรือ โฟลเดอร์ Download)</li>
+        <li>ถ้าขึ้นเตือน <b>"ติดตั้งจากแหล่งที่ไม่รู้จัก"</b> → กด <b>ตั้งค่า</b> แล้วเปิดอนุญาตให้เบราว์เซอร์/ตัวจัดการไฟล์</li>
+        <li>กด <b>ติดตั้ง</b> → เปิดแอป → กด <b>ยอมรับ</b> แล้วเปิดสวิตช์ติดตาม</li>
+      </ol>
+
+      <div class="note">
+        💡 <b>สำคัญ:</b> ตอนเปิดแอปครั้งแรก ให้อนุญาตตำแหน่งเป็น <b>"ตลอดเวลา"</b> และปิด
+        <b>Battery optimization</b> ให้แอปนี้ (ตั้งค่า → แอป → Field Track → แบตเตอรี่ → ไม่จำกัด)
+        เพื่อให้ส่งตำแหน่งได้ต่อเนื่องแม้ปิดจอ
+      </div>
+    </div>
+  </div>
+</body>
+</html>

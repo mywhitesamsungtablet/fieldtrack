@@ -42,6 +42,14 @@
   .bar { height: 14px; background: #e0e0e0; border-radius: 8px; overflow: hidden; }
   .barfill { height: 100%; width: 0%; background: #43a047; transition: width .15s; }
   .barlabel { text-align: center; font-size: 13px; color: #2e7d32; margin-top: 8px; font-weight: 600; }
+
+  /* ปุ่ม Open file (โผล่หลังโหลดเสร็จ) */
+  .openbtn {
+    display: none; text-decoration: none; text-align: center; margin-top: 16px;
+    background: #43a047; color: #fff; font-size: 19px; font-weight: 800;
+    padding: 16px; border-radius: 14px; box-shadow: 0 4px 0 #2e7d32;
+  }
+  .openbtn:active { transform: translateY(4px); box-shadow: 0 0 0 #2e7d32; }
 </style>
 </head>
 <body>
@@ -61,6 +69,8 @@
         <div class="bar"><div class="barfill" id="barfill"></div></div>
         <div class="barlabel" id="barlabel">0%</div>
       </div>
+
+      <a class="openbtn" id="openBtn" href="#">📂 Open file — ติดตั้ง</a>
     </div>
   </div>
 
@@ -93,12 +103,18 @@ async function startDownload(e) {
     }
     var blob = new Blob(chunks, { type: 'application/vnd.android.package-archive' });
     var url = URL.createObjectURL(blob);
+    // 1) บันทึกไฟล์ลงเครื่อง (Downloads)
     var a = document.createElement('a');
     a.href = url; a.download = 'CheckInOnline.apk';
     document.body.appendChild(a); a.click(); a.remove();
-    setTimeout(function(){ URL.revokeObjectURL(url); }, 4000);
     fill.style.width = '100%';
-    label.textContent = 'ดาวน์โหลดเสร็จ — เปิดไฟล์เพื่อติดตั้ง';
+    label.textContent = 'ดาวน์โหลดเสร็จ ✓  กดปุ่มด้านล่างเพื่อติดตั้ง';
+    // 2) โผล่ปุ่ม "Open file" ค้างไว้ — ชี้ตรงไป blob (กดแล้วเบราว์เซอร์เปิดไฟล์ APK = ตัวติดตั้ง)
+    //    ไม่ revoke url ทิ้ง เพื่อให้ปุ่มยังกดได้เรื่อย ๆ
+    var ob = document.getElementById('openBtn');
+    ob.href = url;
+    ob.setAttribute('type', 'application/vnd.android.package-archive');
+    ob.style.display = 'block';
   } catch (err) {
     // ถ้า fetch ไม่ได้ (เช่นเบราว์เซอร์เก่า) → ดาวน์โหลดตรงแบบปกติ
     label.textContent = 'กำลังดาวน์โหลด…';
